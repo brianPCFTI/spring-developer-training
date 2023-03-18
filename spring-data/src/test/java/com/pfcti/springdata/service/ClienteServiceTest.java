@@ -49,4 +49,45 @@ class ClienteServiceTest {
 
 
     }
+
+    @Test
+    void obtenerCliente() {
+        ClienteDto clienteDto = clienteService.obtenerCliente(1);
+        //assertEquals("1", clienteDto.getId());
+    }
+
+    @Test
+    void eliminarCliente() {
+        ClienteDto clienteDtoBase = clienteService.obtenerCliente(1);
+        assertEquals(1, clienteDtoBase.getId());
+
+        clienteService.eliminarCliente(1);
+
+        try {
+            clienteService.obtenerCliente(1);
+            fail("No debe llegar aca");
+        } catch (RuntimeException e) {
+            System.out.println("CLIENTE NO EXISTE: " + e.getMessage());
+        }
+    }
+
+    @Test
+    void actualizarCliente() {
+
+        ClienteDto clienteDtoBase = clienteService.obtenerCliente(1);
+        System.out.println(clienteDtoBase);
+
+        clienteDtoBase.setNombre(clienteDtoBase.getNombre() + "TEST");
+        clienteDtoBase.setCedula(clienteDtoBase.getCedula() + "TEST");
+        clienteDtoBase.setTelefono(clienteDtoBase.getTelefono() + "TEST");
+        clienteDtoBase.setApellidos(clienteDtoBase.getApellidos() + "TEST");
+        clienteService.actualizarCliente(clienteDtoBase);
+
+        ClienteDto clienteDtoBaseUpdated = clienteService.obtenerCliente(1);
+
+        System.out.println(clienteDtoBaseUpdated);
+        assertEquals("ROBERTOTEST", clienteDtoBaseUpdated.getNombre());
+        assertEquals("PEREZTEST", clienteDtoBaseUpdated.getApellidos());
+    }
+
 }

@@ -33,4 +33,16 @@ public class ClienteService {
        return clienteDto;
     }
 
+    public void actualizarCliente(ClienteDto clienteDto){
+        Cliente cliente = new Cliente();
+        cliente.setId(clienteDto.getId());
+        cliente.setNombre(clienteDto.getNombre());
+        cliente.setApellidos(clienteDto.getApellidos());
+        cliente.setCedula(clienteDto.getCedula());
+        cliente.setTelefono(clienteDto.getTelefono());
+        repository.save(cliente);
+    }
+    public void eliminarCliente(Integer clienteId){
+        repository.deleteById(clienteId);
+    }
 }
