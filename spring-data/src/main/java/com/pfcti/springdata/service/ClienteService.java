@@ -20,4 +20,17 @@ public class ClienteService {
        repository.save(cliente);
     }
 
+    public ClienteDto obtenerCliente(int idCliente){
+       Cliente cliente = repository.findById(idCliente)
+               .orElseThrow( () -> {throw  new RuntimeException("Cliente no existe");});
+
+       ClienteDto clienteDto = new ClienteDto();
+       clienteDto.setId(cliente.getId());
+       clienteDto.setApellidos(cliente.getApellidos());
+       clienteDto.setNombre(cliente.getNombre());
+       clienteDto.setCedula(cliente.getCedula());
+
+       return clienteDto;
+    }
+
 }
