@@ -14,7 +14,7 @@ import java.util.List;
 @Transactional
 @AllArgsConstructor
 public class ClienteService {
-    ClienteRepository repository;
+    ClienteRepository clienteRepository;
 
     public void insertarCliente(ClienteDto clienteDto){
        Cliente cliente = new Cliente();
@@ -22,11 +22,11 @@ public class ClienteService {
        cliente.setNombre(clienteDto.getNombre());
        cliente.setCedula(clienteDto.getCedula());
        cliente.setTelefono(clienteDto.getTelefono());
-       repository.save(cliente);
+       clienteRepository.save(cliente);
     }
 
     public ClienteDto obtenerCliente(int idCliente){
-       Cliente cliente = repository.findById(idCliente)
+       Cliente cliente = clienteRepository.findById(idCliente)
                .orElseThrow( () -> {throw  new RuntimeException("Cliente no existe");});
 
        ClienteDto clienteDto = new ClienteDto();
@@ -45,16 +45,16 @@ public class ClienteService {
         cliente.setApellidos(clienteDto.getApellidos());
         cliente.setCedula(clienteDto.getCedula());
         cliente.setTelefono(clienteDto.getTelefono());
-        repository.save(cliente);
+        clienteRepository.save(cliente);
     }
     public void eliminarCliente(Integer clienteId){
-        repository.deleteById(clienteId);
+        clienteRepository.deleteById(clienteId);
     }
 
 
     public List<ClienteDto> obtenerClientesPorCodigoISOPaisYCuentasActivas(String codigoISOPais){
         List<ClienteDto> resultadoClientesDto = new ArrayList<>();
-        List<Cliente> clientes = repository.findClientesByPaisNacimientoAndCuentas_EstadoIsTrue(codigoISOPais);
+        List<Cliente> clientes = clienteRepository.findClientesByPaisNacimientoAndCuentas_EstadoIsTrue(codigoISOPais);
         clientes.forEach(cliente -> {
             ClienteDto clienteDto = new ClienteDto();
             clienteDto.setId(cliente.getId());
