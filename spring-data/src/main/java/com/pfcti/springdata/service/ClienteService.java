@@ -3,6 +3,7 @@ package com.pfcti.springdata.service;
 import com.pfcti.springdata.dto.ClienteDto;
 import com.pfcti.springdata.model.Cliente;
 import com.pfcti.springdata.repository.ClienteRepository;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 @AllArgsConstructor
 public class ClienteService {
     ClienteRepository repository;
