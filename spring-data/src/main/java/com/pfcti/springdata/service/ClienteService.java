@@ -3,6 +3,8 @@ package com.pfcti.springdata.service;
 import com.pfcti.springdata.dto.ClienteDto;
 import com.pfcti.springdata.model.Cliente;
 import com.pfcti.springdata.repository.ClienteRepository;
+import com.pfcti.springdata.repository.CuentaRepository;
+import com.pfcti.springdata.repository.DireccionRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,7 +16,9 @@ import java.util.List;
 @Transactional
 @AllArgsConstructor
 public class ClienteService {
-    ClienteRepository clienteRepository;
+    private ClienteRepository clienteRepository;
+    private DireccionRepository direccionRepository;
+    private CuentaRepository cuentaRepository;
 
     public void insertarCliente(ClienteDto clienteDto){
        Cliente cliente = new Cliente();
@@ -47,10 +51,12 @@ public class ClienteService {
         cliente.setTelefono(clienteDto.getTelefono());
         clienteRepository.save(cliente);
     }
+
+    /*
     public void eliminarCliente(Integer clienteId){
         clienteRepository.deleteById(clienteId);
     }
-
+    */
 
     public List<ClienteDto> obtenerClientesPorCodigoISOPaisYCuentasActivas(String codigoISOPais){
         List<ClienteDto> resultadoClientesDto = new ArrayList<>();
@@ -68,5 +74,16 @@ public class ClienteService {
         return resultadoClientesDto;
     }
 
+    //Eliminación en cascada (el orden es manual)
+    //Igual que en el relacional, primero los hijos, despues el padre
+    public void eliminarCliente(Integer clienteId){
+        direccionRepository.deleteAllByCliente_Id(clienteId);
+        cuentaRepository.deleteAllByCliente_Id(clienteId);
+        clienteRepository.deleteById(clienteId);
+    }
+
+    public List<Cliente> buscarClientesPorApellido(String apellidos){
+        return clienteRepository.buscarPorApellidos(apellidos);
+    }
 
 }
