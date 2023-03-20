@@ -24,4 +24,10 @@ public class Cliente {
 
     @OneToMany(mappedBy = "cliente")
     private List<Direccion> direccions;
+
+    private String paisNacimiento;
+
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Cuenta> cuentas;
 }

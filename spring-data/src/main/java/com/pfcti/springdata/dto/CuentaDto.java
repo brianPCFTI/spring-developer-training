@@ -17,4 +17,7 @@ public class CuentaDto {
     private String tipo;
 
     private Cliente cliente;
+
+    private Boolean estado;
+
 }

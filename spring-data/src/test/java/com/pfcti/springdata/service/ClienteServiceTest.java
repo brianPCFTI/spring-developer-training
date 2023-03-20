@@ -90,4 +90,12 @@ class ClienteServiceTest {
         assertEquals("PEREZTEST", clienteDtoBaseUpdated.getApellidos());
     }
 
+    //bmv: Consulta por llave foranea
+    @Test
+    void obtenerClientesPorCodigoISOPaisYCuentasActivas() {
+        List<ClienteDto> clientesDto = clienteService.obtenerClientesPorCodigoISOPaisYCuentasActivas("CR");
+        clientesDto.forEach(clienteDto -> {System.out.println("Cuentas Activas" + clienteDto);});
+        assertEquals(1, clientesDto.size());
+    }
+
 }

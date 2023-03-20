@@ -6,6 +6,9 @@ import com.pfcti.springdata.repository.ClienteRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class ClienteService {
@@ -45,4 +48,23 @@ public class ClienteService {
     public void eliminarCliente(Integer clienteId){
         repository.deleteById(clienteId);
     }
+
+
+    public List<ClienteDto> obtenerClientesPorCodigoISOPaisYCuentasActivas(String codigoISOPais){
+        List<ClienteDto> resultadoClientesDto = new ArrayList<>();
+        List<Cliente> clientes = repository.findClientesByPaisNacimientoAndCuentas_EstadoIsTrue(codigoISOPais);
+        clientes.forEach(cliente -> {
+            ClienteDto clienteDto = new ClienteDto();
+            clienteDto.setId(cliente.getId());
+            clienteDto.setApellidos(cliente.getApellidos());
+            clienteDto.setNombre(cliente.getNombre());
+            clienteDto.setCedula(cliente.getCedula());
+            clienteDto.setPaisNacimiento(cliente.getPaisNacimiento());
+            resultadoClientesDto.add(clienteDto);
+            System.out.println(clienteDto);
+        });
+        return resultadoClientesDto;
+    }
+
+
 }

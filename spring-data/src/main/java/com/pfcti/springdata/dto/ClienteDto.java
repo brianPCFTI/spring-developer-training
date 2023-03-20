@@ -15,4 +15,6 @@ public class ClienteDto {
     private String cedula;
     private String telefono;
     private List<Direccion> direccions;
+
+    private String paisNacimiento;
 }
