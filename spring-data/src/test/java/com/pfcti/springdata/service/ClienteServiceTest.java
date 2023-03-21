@@ -130,4 +130,7 @@ class ClienteServiceTest {
         assertEquals(1,resultadoCriteriosConDatosDTO.size());
     }
 
+
+
+
 }
