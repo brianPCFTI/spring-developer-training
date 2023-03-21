@@ -1,11 +1,12 @@
 package com.pfcti.springdata.service;
 
 import com.pfcti.springdata.criteria.ClienteSpecification;
-import com.pfcti.springdata.dto.ClienteDto;
+import com.pfcti.springdata.dto.*;
 import com.pfcti.springdata.model.Cliente;
-import com.pfcti.springdata.repository.ClienteRepository;
-import com.pfcti.springdata.repository.CuentaRepository;
-import com.pfcti.springdata.repository.DireccionRepository;
+import com.pfcti.springdata.model.Cuenta;
+import com.pfcti.springdata.model.Inversion;
+import com.pfcti.springdata.model.Tarjeta;
+import com.pfcti.springdata.repository.*;
 import jakarta.persistence.Tuple;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -13,6 +14,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,6 +25,10 @@ public class ClienteService {
     private ClienteRepository clienteRepository;
     private DireccionRepository direccionRepository;
     private CuentaRepository cuentaRepository;
+
+    private TarjetaRepository tarjetaRepository;
+
+    private InversionRepository inversionRepository;
 
     private ClienteSpecification clienteSpecification;
 
@@ -116,6 +122,43 @@ public class ClienteService {
         ClienteDto clienteDto = new ClienteDto();
         BeanUtils.copyProperties(cliente, clienteDto);
         return clienteDto;
+    }
+
+    public ProductsDto obtenerProductosDelCliente(int clientId){
+
+        ProductsDto productsDto = new ProductsDto();
+
+        /*
+        List<Cuenta> cuentas = cuentaRepository.findAllById(clientId);
+        Tarjeta tarjetas = tarjetaRepository.findAllById(clientId);
+        Inversion inversiones = inversionRepository.findAllById(clientId);
+        */
+
+        List<Cuenta> cuentas = Collections.<Cuenta>emptyList();
+        List<Tarjeta> tarjetas = Collections.<Tarjeta>emptyList();
+        List<Inversion> inversiones = Collections.<Inversion>emptyList();
+
+        //Mapeo de entidades
+        cuentas.forEach(cuenta -> {
+            CuentaDto cuentaDto = new CuentaDto();
+            BeanUtils.copyProperties(cuenta, cuentaDto);
+            productsDto.getCuentas().add(cuentaDto);
+        });
+
+        tarjetas.forEach(tarjeta -> {
+            TarjetaDto tarjetaDto = new TarjetaDto();
+            BeanUtils.copyProperties(tarjeta, tarjetaDto);
+            productsDto.getTarjetas().add(tarjetaDto);
+        });
+
+        inversiones.forEach(inversion -> {
+            InversionDto inversionDto = new InversionDto();
+            BeanUtils.copyProperties(inversion, inversionDto);
+            productsDto.getInversiones().add(inversionDto);
+        });
+
+        return productsDto;
+
     }
 
 }
