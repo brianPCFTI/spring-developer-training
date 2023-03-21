@@ -28,6 +28,13 @@ public class CuentaSpecification {
         }
     }
 
+    //Para el manejo de booleanos
+    public <T> Specification<T> isTrue(String fieldName, Boolean fieldValue) {
+        return fieldValue == null ? null :
+                (root, query, criteriaBuilder)
+                        -> criteriaBuilder.isTrue(root.get(fieldName));
+    }
+
     private Specification<Cuenta> numeroCriteria(CuentaDto cuentaDto){
         return like("numero", cuentaDto.getNumero());
     }

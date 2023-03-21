@@ -26,14 +26,14 @@ class CuentaServiceTest {
         CuentaDto cuentaDto = new CuentaDto();
         cuentaDto.setNumero("22222");
         cuentaDto.setEstado(true);
-/*
+
         List<CuentaDto> cuentas = cuentaService.buscarCuentaDinamicamentePorCriterio(cuentaDto);
 
         cuentas.forEach( cuenta -> {
             System.out.println( "-- [Cuentas]--" );
             System.out.println( String.format("numero: %s", cuenta.getNumero()));
         });
-*/
+
         assertEquals(1,1);
         //assertEquals(1,cuentas.size());
 

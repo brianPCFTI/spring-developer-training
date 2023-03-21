@@ -27,6 +27,13 @@ public class ClienteSpecification {
         }
     }
 
+    //Para el manejo de booleanos
+    public <T> Specification<T> isTrue(String fieldName, Boolean fieldValue) {
+        return fieldValue == null ? null :
+                (root, query, criteriaBuilder)
+                        -> criteriaBuilder.isTrue(root.get(fieldName));
+    }
+
     private Specification<Cliente> apellidoCriteria(ClienteDto clienteDto){
         return like("apellidos", clienteDto.getApellidos());
     }
@@ -56,5 +63,7 @@ public class ClienteSpecification {
                 .and(telefonoCriteria(clienteDto))
                 .and(paisNacimientoCriteria(clienteDto));
     }
+
+
 
 }
