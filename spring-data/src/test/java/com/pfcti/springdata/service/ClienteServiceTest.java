@@ -120,7 +120,13 @@ class ClienteServiceTest {
         clienteDto.setApellidos("SANCHEZ");
         clienteDto.setNombre("RAUL");
         List<ClienteDto> resultadoCriteriosConDatosDTO = clienteService.buscarClientesDinamicamentePorCriterio(clienteDto);
-        resultadoCriteriosConDatosDTO.forEach(clienteDtoResultado -> {System.out.println("ClienteDto es:"+ clienteDtoResultado);});
+
+        resultadoCriteriosConDatosDTO.forEach(clienteDtoResultado -> {
+            System.out.println( "-- [Cliente]--" );
+            System.out.println( String.format("nombre: %s",clienteDtoResultado.getNombre()) );
+            System.out.println( String.format("apellido: %s",clienteDtoResultado.getApellidos()) );
+        });
+
         assertEquals(1,resultadoCriteriosConDatosDTO.size());
     }
 
