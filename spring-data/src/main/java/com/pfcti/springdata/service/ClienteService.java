@@ -1,5 +1,6 @@
 package com.pfcti.springdata.service;
 
+import com.pfcti.springdata.criteria.ClienteSpecification;
 import com.pfcti.springdata.dto.ClienteDto;
 import com.pfcti.springdata.model.Cliente;
 import com.pfcti.springdata.repository.ClienteRepository;
@@ -8,10 +9,12 @@ import com.pfcti.springdata.repository.DireccionRepository;
 import jakarta.persistence.Tuple;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -20,6 +23,8 @@ public class ClienteService {
     private ClienteRepository clienteRepository;
     private DireccionRepository direccionRepository;
     private CuentaRepository cuentaRepository;
+
+    private ClienteSpecification clienteSpecification;
 
     public void insertarCliente(ClienteDto clienteDto){
        Cliente cliente = new Cliente();
@@ -99,6 +104,18 @@ public class ClienteService {
             System.out.println(tuple.get("apellidos"));
         });
         return clienteDtos;
+    }
+
+    public List<ClienteDto> buscarClientesDinamicamentePorCriterio(ClienteDto clienteDtoFilter){
+        return clienteRepository.findAll(clienteSpecification.buildFilter(clienteDtoFilter))
+                .stream().map(this::fromClienteToDto).collect(Collectors.toList());
+    }
+
+    //Mapeo de propiedades del Entity al DTO.
+    private ClienteDto fromClienteToDto(Cliente cliente){
+        ClienteDto clienteDto = new ClienteDto();
+        BeanUtils.copyProperties(cliente, clienteDto);
+        return clienteDto;
     }
 
 }

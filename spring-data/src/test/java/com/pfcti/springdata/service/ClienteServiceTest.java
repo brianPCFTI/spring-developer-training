@@ -114,4 +114,14 @@ class ClienteServiceTest {
         assertEquals("PEREZ", cliente.get(0).getApellidos());
     }
 
+    @Test
+    void buscarClientesDinamicamentePorCriterio() {
+        ClienteDto clienteDto = new ClienteDto();
+        clienteDto.setApellidos("SANCHEZ");
+        clienteDto.setNombre("RAUL");
+        List<ClienteDto> resultadoCriteriosConDatosDTO = clienteService.buscarClientesDinamicamentePorCriterio(clienteDto);
+        resultadoCriteriosConDatosDTO.forEach(clienteDtoResultado -> {System.out.println("ClienteDto es:"+ clienteDtoResultado);});
+        assertEquals(1,resultadoCriteriosConDatosDTO.size());
+    }
+
 }
