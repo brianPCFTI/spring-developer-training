@@ -5,6 +5,7 @@ import com.pfcti.springdata.model.Cliente;
 import com.pfcti.springdata.repository.ClienteRepository;
 import com.pfcti.springdata.repository.CuentaRepository;
 import com.pfcti.springdata.repository.DireccionRepository;
+import jakarta.persistence.Tuple;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -84,6 +85,20 @@ public class ClienteService {
 
     public List<Cliente> buscarClientesPorApellido(String apellidos){
         return clienteRepository.buscarPorApellidos(apellidos);
+    }
+
+    public List<ClienteDto> buscarClientesPorApellidoNativo(String apellidos){
+        List<ClienteDto> clienteDtos = new ArrayList<>();
+        List<Tuple> tuples = clienteRepository.buscarPorApellidosNativo(apellidos);
+        tuples.forEach(tuple -> {
+            ClienteDto clienteDto = new ClienteDto();
+            clienteDto.setApellidos((String) tuple.get("apellidos"));
+            clienteDto.setNombre((String) tuple.get("nombre"));
+            clienteDto.setCedula((String) tuple.get("cedula"));
+            clienteDtos.add(clienteDto);
+            System.out.println(tuple.get("apellidos"));
+        });
+        return clienteDtos;
     }
 
 }

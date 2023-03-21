@@ -98,11 +98,20 @@ class ClienteServiceTest {
         assertEquals(1, clientesDto.size());
     }
 
-    //Consulta por JPLSQL
+    //Consulta por JPLSQL.
     @Test
     void buscarClientesPorApellido() {
         List<Cliente> cliente =  clienteService.buscarClientesPorApellido("PEREZ");
         assertFalse(cliente.isEmpty());
         assertEquals("PEREZ", cliente.get(0).getApellidos());
     }
+
+    //Consulta consulta nativa.
+    @Test
+    void buscarClientesPorApellidoNativo() {
+        List<Cliente> cliente =  clienteService.buscarClientesPorApellido("PEREZ");
+        assertFalse(cliente.isEmpty());
+        assertEquals("PEREZ", cliente.get(0).getApellidos());
+    }
+
 }
