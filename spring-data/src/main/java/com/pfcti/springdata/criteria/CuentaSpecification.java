@@ -2,6 +2,7 @@ package com.pfcti.springdata.criteria;
 
 import com.pfcti.springdata.dto.CuentaDto;
 import com.pfcti.springdata.model.Cliente;
+import com.pfcti.springdata.model.Cuenta;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
 
@@ -27,19 +28,19 @@ public class CuentaSpecification {
         }
     }
 
-    private Specification<Cliente> numeroCriteria(CuentaDto cuentaDto){
+    private Specification<Cuenta> numeroCriteria(CuentaDto cuentaDto){
         return like("numero", cuentaDto.getNumero());
     }
 
-    private Specification<Cliente> estadoCriteria(CuentaDto cuentaDto){
+    private Specification<Cuenta> estadoCriteria(CuentaDto cuentaDto){
         return like("estado", cuentaDto.getEstado().toString());
     }
 
-    private Specification<Cliente> tipoCriteria(CuentaDto cuentaDto){
+    private Specification<Cuenta> tipoCriteria(CuentaDto cuentaDto){
         return like("tipo", cuentaDto.getTipo());
     }
 
-    public Specification<Cliente> buildFilter(CuentaDto cuentaDto){
+    public Specification<Cuenta> buildFilter(CuentaDto cuentaDto){
         System.out.println("Terms of Criteria:" + cuentaDto);
         return Specification
                 .where(numeroCriteria(cuentaDto))
