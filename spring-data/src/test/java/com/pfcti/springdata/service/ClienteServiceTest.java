@@ -135,6 +135,22 @@ class ClienteServiceTest {
     void obtenerProductosDelCliente() {
         ProductsDto productsDto = new ProductsDto();
         productsDto = clienteService.obtenerProductosDelCliente(1);
+
+        System.out.println( "-- [cuentas]--" );
+        productsDto.getCuentas().forEach( cuenta -> {
+            System.out.println( String.format("cuenta: %s", cuenta.getNumero()) );
+        });
+
+        System.out.println( "--[tarjetas]--" );
+        productsDto.getTarjetas().forEach( tarjeta -> {
+            System.out.println( String.format("tarjeta: %s", tarjeta.getNumero()) );
+        });
+
+        System.out.println( "--[inversiones]--" );
+        productsDto.getInversiones().forEach( inversion -> {
+            System.out.println( String.format("inversion: %s", inversion.getNumero()) );
+        });
+
         assertEquals(1,1);
     }
 

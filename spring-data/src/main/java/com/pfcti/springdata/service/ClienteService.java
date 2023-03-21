@@ -14,6 +14,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -128,15 +129,13 @@ public class ClienteService {
 
         ProductsDto productsDto = new ProductsDto();
 
-        /*
-        List<Cuenta> cuentas = cuentaRepository.findAllById(clientId);
-        Tarjeta tarjetas = tarjetaRepository.findAllById(clientId);
-        Inversion inversiones = inversionRepository.findAllById(clientId);
-        */
+        //List<Cuenta> cuentas = Collections.<Cuenta>emptyList();
+        //List<Tarjeta> tarjetas = Collections.<Tarjeta>emptyList();
+        //List<Inversion> inversiones = Collections.<Inversion>emptyList();
 
-        List<Cuenta> cuentas = Collections.<Cuenta>emptyList();
-        List<Tarjeta> tarjetas = Collections.<Tarjeta>emptyList();
-        List<Inversion> inversiones = Collections.<Inversion>emptyList();
+        List<Cuenta> cuentas = cuentaRepository.findAllById(Arrays.asList(clientId));
+        List<Tarjeta> tarjetas = tarjetaRepository.findAllById(Arrays.asList(clientId));
+        List<Inversion> inversiones = inversionRepository.findAllById(Arrays.asList(clientId));
 
         //Mapeo de entidades
         cuentas.forEach(cuenta -> {
