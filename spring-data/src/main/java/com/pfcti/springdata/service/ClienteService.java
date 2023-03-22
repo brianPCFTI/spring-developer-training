@@ -160,4 +160,51 @@ public class ClienteService {
 
     }
 
+
+    public ProductosDto obtenerTodosLosProductosDeUnCliente(int id) {
+        ProductosDto productosDto = new ProductosDto();
+        List<CuentaDto> cuentaDtos = new ArrayList<>();
+        cuentaRepository.findByCliente_IdAndEstadoIsTrue(id).forEach(cuenta -> {
+            CuentaDto cuentaDto;
+            cuentaDto = fromCuentaToDto(cuenta);
+            cuentaDtos.add(cuentaDto);
+        });
+        productosDto.setCuentaDto(cuentaDtos);
+
+        List<TarjetaDto> tarjetaDtos = new ArrayList<>();
+        tarjetaRepository.findByCliente_IdAndEstadoIsTrue(id).forEach(tarjeta -> {
+            TarjetaDto tarjetaDto;
+            tarjetaDto = fromTarjetaToDto(tarjeta);
+            tarjetaDtos.add(tarjetaDto);
+        });
+        productosDto.setTarjetaDtos(tarjetaDtos);
+
+        List<InversionDto> inversionDtos = new ArrayList<>();
+        inversionRepository.findByCliente_IdAndEstadoIsTrue(id).forEach(inversion -> {
+            InversionDto inversionDto;
+            inversionDto = fromInversionToDto(inversion);
+            inversionDtos.add(inversionDto);
+        });
+        productosDto.setInversionDtos(inversionDtos);
+        return productosDto;
+    }
+
+    private CuentaDto fromCuentaToDto(Cuenta cuenta) {
+        CuentaDto cuentaDto = new CuentaDto();
+        BeanUtils.copyProperties(cuenta, cuentaDto);
+        return cuentaDto;
+    }
+
+    private TarjetaDto fromTarjetaToDto(Tarjeta tarjeta) {
+        TarjetaDto tarjetaDto = new TarjetaDto();
+        BeanUtils.copyProperties(tarjeta, tarjetaDto);
+        return tarjetaDto;
+    }
+
+    private InversionDto fromInversionToDto(Inversion inversion) {
+        InversionDto inversionDto = new InversionDto();
+        BeanUtils.copyProperties(inversion, inversionDto);
+        return inversionDto;
+    }
+
 }

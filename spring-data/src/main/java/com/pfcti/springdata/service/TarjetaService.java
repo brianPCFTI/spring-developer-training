@@ -17,6 +17,18 @@ import java.util.List;
 public class TarjetaService {
     TarjetaRepository tarjetaRepository;
 
+    public Tarjeta cambiarEstadoTarjetaPorIdV2(int id, boolean estado){
+        Tarjeta tarjeta = tarjetaRepository.findById(id)
+                .orElseThrow(() -> {throw new RuntimeException("tarjetas de Cliente No Existe");});
+        tarjeta.setEstado(estado);
+        return tarjeta;
+    }
+
+    public List<Tarjeta> obtenerTarjetasPorIdCliente(int id){
+        List<Tarjeta> resultado = tarjetaRepository.findByCliente_Id(id);
+        return resultado;
+    }
+
     public TarjetaDto cambiarEstadoTarjetaPorId(int id, Boolean estado){
 
        //Consulta la tarjeta

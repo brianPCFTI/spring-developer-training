@@ -13,4 +13,5 @@ public interface TarjetaRepository extends JpaRepository<Tarjeta, Integer> {
 
     List<Tarjeta> findByCliente_IdAndEstadoIsTrue(int clienteId);
 
+    List<Tarjeta> findByCliente_Id(int id);
 }

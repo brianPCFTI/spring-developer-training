@@ -20,6 +20,13 @@ class TarjetaServiceTest {
     private EntityManager entityManager;
 
     @Test
+    void cambiarEstadoTarjetaPorIdV2() {
+        //inactivar con estado en false
+        TarjetaDto tarjeta = tarjetaService.cambiarEstadoTarjetaPorId(1, false);
+        assertEquals(false,tarjeta.getEstado());
+    }
+
+    @Test
     void cambiarEstadoTarjetaPorId() {
         TarjetaDto tarjetaDto = tarjetaService.cambiarEstadoTarjetaPorId(1, false);
         assertEquals(false,tarjetaDto.getEstado());
