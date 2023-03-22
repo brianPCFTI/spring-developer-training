@@ -27,13 +27,13 @@ public class AdministradorClientes {
     }
 
     //BMV inyección por constructor
-    /*
+
 
     public AdministradorClientes(ClienteRepository clienteRepository, ClienteQueryType defaultClienteQueryType) {
         this.clienteRepository = clienteRepository;
         this.defaultClienteQueryType = defaultClienteQueryType;
     }
-   */
+
 
     /*
     public AdministradorClientes(ClienteRepository clienteRepository) {
