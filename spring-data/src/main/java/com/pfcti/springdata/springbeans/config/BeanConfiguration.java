@@ -13,9 +13,15 @@ public class BeanConfiguration {
     @Autowired
     private ClienteRepository clienteRepository;
 
-    @Bean
+
+    @Bean({"defaultCedula" , "criteriaByCedula"}) //Listado de alias del bean
     public AdministradorClientes administradorClientesBean(){
         return new AdministradorClientes(clienteRepository, ClienteQueryType.CEDULA);
+    }
+
+    @Bean("defaultNombres") //Si se un nombre va de esta manera
+    public AdministradorClientes administradorClientesByNombre() {
+        return new AdministradorClientes(clienteRepository,ClienteQueryType.NOMBRES);
     }
 
 }
