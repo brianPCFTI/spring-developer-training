@@ -15,12 +15,27 @@ public class AdministradorClientes {
 
     private ClienteRepository clienteRepository;
 
+    private ClienteQueryType defaultClienteQueryType;
+
+    public AdministradorClientes(ClienteRepository clienteRepository, ClienteQueryType defaultClienteQueryType) {
+        this.clienteRepository = clienteRepository;
+        this.defaultClienteQueryType = defaultClienteQueryType;
+    }
+
+    /*
     public AdministradorClientes(ClienteRepository clienteRepository) {
         this.clienteRepository = clienteRepository;
     }
 
+     */
     public List<ClienteDto> obtenerListaClientesPorCriterio(ClienteQueryDto clienteQueryDto) {
         List<Cliente> clientes = null;
+
+        //Obtiene el valor (defaultClienteQueryType) por la lista de dependencia.
+        if (clienteQueryDto.getTipoBusqueda() == null) {
+            clienteQueryDto.setTipoBusqueda(defaultClienteQueryType);
+        }
+
         if (ClienteQueryType.CEDULA.equals(clienteQueryDto.getTipoBusqueda())) {
             clientes = this.clienteRepository.findByCedula(clienteQueryDto.getTextoBusqueda());
         } else if (ClienteQueryType.NOMBRES.equals(clienteQueryDto.getTipoBusqueda())) {
