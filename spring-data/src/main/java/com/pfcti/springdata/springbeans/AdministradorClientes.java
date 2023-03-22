@@ -17,10 +17,23 @@ public class AdministradorClientes {
 
     private ClienteQueryType defaultClienteQueryType;
 
+    //BMV - Inyección por setters
+    public void setClienteRepository(ClienteRepository clienteRepository) {
+        this.clienteRepository = clienteRepository;
+    }
+
+    public AdministradorClientes(ClienteQueryType defaultClienteQueryType) {
+        this.defaultClienteQueryType = defaultClienteQueryType;
+    }
+
+    //BMV inyección por constructor
+    /*
+
     public AdministradorClientes(ClienteRepository clienteRepository, ClienteQueryType defaultClienteQueryType) {
         this.clienteRepository = clienteRepository;
         this.defaultClienteQueryType = defaultClienteQueryType;
     }
+   */
 
     /*
     public AdministradorClientes(ClienteRepository clienteRepository) {

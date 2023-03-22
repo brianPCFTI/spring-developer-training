@@ -49,7 +49,14 @@ class AdministradorClientesTest {
     void obtenerListaClientesPorCriterio() {
 
         //Se instancia la clase, se pasa los elementos dependientes al constructor
-        AdministradorClientes administradorClientes = new AdministradorClientes(clienteRepository, ClienteQueryType.CEDULA);
+
+        //Inyeccion por constructor
+        //AdministradorClientes administradorClientes = new AdministradorClientes(clienteRepository, ClienteQueryType.CEDULA);
+
+        //Inyección por setters
+        AdministradorClientes administradorClientes = new AdministradorClientes(ClienteQueryType.CEDULA);
+        administradorClientes.setClienteRepository(clienteRepository);
+
         //AdministradorClientes administradorClientes = new AdministradorClientes(clienteRepository);
         ClienteQueryDto clienteQueryDto = new ClienteQueryDto();
         clienteQueryDto.setTipoBusqueda(ClienteQueryType.CEDULA);
