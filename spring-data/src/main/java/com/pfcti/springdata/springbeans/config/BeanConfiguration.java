@@ -28,13 +28,13 @@ public class BeanConfiguration {
         return new AdministradorClientes(clienteRepository,ClienteQueryType.NOMBRES);
     }
 
-    @Bean("defaultNombresPrototype")
+    @Bean("defaultClientesPrototype")
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public AdministradorClientes administradorClientesPrototype() {
         return new AdministradorClientes(clienteRepository, ClienteQueryType.CEDULA);
     }
 
-    @Bean("defaultNombresPrototype")
+    @Bean("defaultScopePrototype")
     @RequestScope
     public AdministradorClientes administradorClientesRequest() {
         return new AdministradorClientes(clienteRepository, ClienteQueryType.CEDULA);
