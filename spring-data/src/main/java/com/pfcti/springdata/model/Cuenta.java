@@ -15,6 +15,7 @@ public class Cuenta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    //NotBlank valida no nulo con al menos 1 caracter
     @NotBlank(message = "Numero de cuenta es mandatorio")
     @NotNull(message = "Numero de cuenta no debe ser null")
     @Size(min = 1, message = "Numero de cuenta debe tener minimo un caracter")
