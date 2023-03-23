@@ -1,7 +1,9 @@
 package com.pfcti.springdata.service;
 
 import com.pfcti.springdata.criteria.CuentaSpecification;
+import com.pfcti.springdata.dto.ClienteDto;
 import com.pfcti.springdata.dto.CuentaDto;
+import com.pfcti.springdata.model.Cliente;
 import com.pfcti.springdata.model.Cuenta;
 import com.pfcti.springdata.repository.CuentaRepository;
 import jakarta.transaction.Transactional;
@@ -29,6 +31,15 @@ public class CuentaService {
         CuentaDto cuentaDto = new CuentaDto();
         BeanUtils.copyProperties(cuenta, cuentaDto);
         return cuentaDto;
+    }
+
+    public void insertarCuenta(CuentaDto cuentaDto){
+        Cuenta cuenta = new Cuenta();
+        cuenta.setCliente(cuentaDto.getCliente());
+        cuenta.setTipo(cuentaDto.getTipo());
+        cuenta.setNumero(cuentaDto.getNumero());
+        cuenta.setEstado(cuentaDto.getEstado());
+        cuentaRepository.save(cuenta);
     }
 
 }

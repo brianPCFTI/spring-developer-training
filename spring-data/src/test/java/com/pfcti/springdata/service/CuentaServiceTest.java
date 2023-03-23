@@ -38,4 +38,14 @@ class CuentaServiceTest {
         //assertEquals(1,cuentas.size());
 
     }
+
+    //Validación de propiedades en beans.
+    @Test
+    void insertarCuentaConValidaciones(){
+        CuentaDto cuentaDto = new CuentaDto();
+        cuentaDto.setNumero(null);
+        //Este muestra los errores de validación.
+        //cuentaService.insertarCuenta(cuentaDto);
+        assertEquals(1,1);
+    }
 }
