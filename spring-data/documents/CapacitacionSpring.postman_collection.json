@@ -1,0 +1,549 @@
+{
+	"info": {
+		"_postman_id": "6e7559e7-490e-4ea2-aa4d-448ad3c81323",
+		"name": "CapacitacionSpring",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "clientes",
+			"item": [
+				{
+					"name": "api-clientes-get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/v1/api/cliente/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"api",
+								"cliente",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "api-clientes-get",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/v1/api/cliente/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"v1",
+										"api",
+										"cliente",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 23 Mar 2023 23:14:31 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"nombre\": \"ROBERTO\",\n    \"apellidos\": \"PEREZ\",\n    \"cedula\": \"1\",\n    \"telefono\": null,\n    \"paisNacimiento\": null,\n    \"direccions\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "api-clientes-get-xml",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/v1/api/cliente/xml/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"api",
+								"cliente",
+								"xml",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "api-clientes-get-xml",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/v1/api/cliente/xml/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"v1",
+										"api",
+										"cliente",
+										"xml",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "xml",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/xml"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 23 Mar 2023 23:14:01 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "<ClienteDto>\n    <id>1</id>\n    <nombre>ROBERTO</nombre>\n    <apellidos>PEREZ</apellidos>\n    <cedula>1</cedula>\n    <telefono/>\n    <paisNacimiento/>\n</ClienteDto>"
+						}
+					]
+				},
+				{
+					"name": "api-clientes-get-xml-json",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/v1/api/cliente/xml/json/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"api",
+								"cliente",
+								"xml",
+								"json",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "api-clientes-get-xml",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/v1/api/cliente/xml/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"v1",
+										"api",
+										"cliente",
+										"xml",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "xml",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/xml"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 23 Mar 2023 23:14:01 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "<ClienteDto>\n    <id>1</id>\n    <nombre>ROBERTO</nombre>\n    <apellidos>PEREZ</apellidos>\n    <cedula>1</cedula>\n    <telefono/>\n    <paisNacimiento/>\n</ClienteDto>"
+						}
+					]
+				},
+				{
+					"name": "api-clientes-get-parameter",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/v1/api/cliente/xml/json/1?parameter=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"api",
+								"cliente",
+								"xml",
+								"json",
+								"1"
+							],
+							"query": [
+								{
+									"key": "parameter",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "api-clientes-get-xml",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/v1/api/cliente/xml/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"v1",
+										"api",
+										"cliente",
+										"xml",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "xml",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/xml"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 23 Mar 2023 23:14:01 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "<ClienteDto>\n    <id>1</id>\n    <nombre>ROBERTO</nombre>\n    <apellidos>PEREZ</apellidos>\n    <cedula>1</cedula>\n    <telefono/>\n    <paisNacimiento/>\n</ClienteDto>"
+						}
+					]
+				},
+				{
+					"name": "guardarCliente",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"nombre\": \"ROBERTO\",\r\n    \"apellidos\": \"PEREZ\",\r\n    \"cedula\": \"1\",\r\n    \"telefono\": null,\r\n    \"paisNacimiento\": null,\r\n    \"direccions\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/v1/api/cliente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"api",
+								"cliente"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "api-clientes-get-xml",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/v1/api/cliente/xml/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"v1",
+										"api",
+										"cliente",
+										"xml",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "xml",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/xml"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 23 Mar 2023 23:14:01 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "<ClienteDto>\n    <id>1</id>\n    <nombre>ROBERTO</nombre>\n    <apellidos>PEREZ</apellidos>\n    <cedula>1</cedula>\n    <telefono/>\n    <paisNacimiento/>\n</ClienteDto>"
+						}
+					]
+				},
+				{
+					"name": "api-clientes-get-xml-json v2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/v1/api/cliente/xml/json/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"api",
+								"cliente",
+								"xml",
+								"json",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "api-clientes-get-xml",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/v1/api/cliente/xml/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"v1",
+										"api",
+										"cliente",
+										"xml",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "xml",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/xml"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 23 Mar 2023 23:14:01 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "<ClienteDto>\n    <id>1</id>\n    <nombre>ROBERTO</nombre>\n    <apellidos>PEREZ</apellidos>\n    <cedula>1</cedula>\n    <telefono/>\n    <paisNacimiento/>\n</ClienteDto>"
+						}
+					]
+				}
+			]
+		}
+	]
+}
