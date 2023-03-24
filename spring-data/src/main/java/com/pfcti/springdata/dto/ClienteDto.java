@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 public class ClienteDto {
     private int id;
-    @NonNull
+
     private String nombre;
     private String apellidos;
     private String cedula;
