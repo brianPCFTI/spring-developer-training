@@ -175,4 +175,11 @@ class ClienteServiceTest {
         assertEquals(1,1);
     }
 
+    @Test
+    void listarTodosLoslientes(){
+        clienteService.listarTodosLosClientes();
+        assertEquals(1,1);
+    }
+
+
 }

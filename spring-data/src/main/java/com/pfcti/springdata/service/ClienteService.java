@@ -207,4 +207,17 @@ public class ClienteService {
         return inversionDto;
     }
 
+    public List<ClienteDto> listarTodosLosClientes(){
+        List<ClienteDto> clienteDtoList = new ArrayList<>();
+        clienteRepository
+                .findAll()
+                .stream()
+                .map(cliente -> {
+                    clienteDtoList.add(fromClienteToDto(cliente));
+                    return cliente;
+                })
+                .collect(Collectors.toList());
+        return clienteDtoList;
+    }
+
 }

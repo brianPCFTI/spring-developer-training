@@ -6,6 +6,7 @@ import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 public class ClienteDto {
     private int id;
+    @NonNull
     private String nombre;
     private String apellidos;
     private String cedula;
