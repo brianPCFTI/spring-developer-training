@@ -220,4 +220,21 @@ public class ClienteService {
         return clienteDtoList;
     }
 
+    public io.spring.guides.gs_producing_web_service.Cliente obtenerClienteParaSoap (int idCliente){
+        Cliente cliente = clienteRepository.findById(idCliente)
+                .orElseThrow(() -> {
+                    throw new RuntimeException("Clinete no existe.");
+                });
+
+        io.spring.guides.gs_producing_web_service.Cliente clienteWS = new io.spring.guides.gs_producing_web_service.Cliente();
+        clienteWS.setId(cliente.getId());
+        clienteWS.setApellidos(cliente.getApellidos());
+        clienteWS.setNombre(cliente.getNombre());
+        clienteWS.setCedula(cliente.getCedula());
+        clienteWS.setTelefono(cliente.getTelefono());
+        clienteWS.setPaisNacimiento(cliente.getPaisNacimiento());
+        return clienteWS;
+
+    }
+
 }
