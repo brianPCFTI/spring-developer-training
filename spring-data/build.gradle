@@ -71,6 +71,9 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	jaxb("org.glassfish.jaxb:jaxb-xjc")
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'
+
+	implementation 'org.springframework.boot:spring-boot-starter-artemis'
+	implementation 'org.apache.activemq:artemis-jakarta-server'
 }
 
 /*
