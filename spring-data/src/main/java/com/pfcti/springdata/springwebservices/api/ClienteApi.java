@@ -6,7 +6,6 @@ import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,7 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("v1/api/cliente")
 @Slf4j
-public class ClienteApp {
+public class ClienteApi {
 
     @Autowired
     private ClienteService clienteService;
