@@ -3,6 +3,7 @@ package com.pfcti.springdata.springjms.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.integration.channel.PublishSubscribeChannel;
 import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
 import org.springframework.jms.support.converter.MessageConverter;
 import org.springframework.jms.support.converter.MessageType;
@@ -17,4 +18,11 @@ public class MessagingConfig {
         converter.setTypeIdPropertyName("_type");
         return converter;
     }
+
+    //Para patron publicador / subscriptor
+    @Bean(name ="pubSubNotification")
+    public PublishSubscribeChannel channel(){
+        return new PublishSubscribeChannel();
+    }
+
 }
