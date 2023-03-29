@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class NotificationProcessor {
     @JmsListener(destination = "smsReceiverJms")// va a representar el nombre de la cola donde se está escuchando
     public void processMessage(NotificationDto noticationDto){
-        // Logica de envio de SMS
+        // Logica de envio de SMS a twilio.
         log.info("sms info: {}", noticationDto);
     }
 }

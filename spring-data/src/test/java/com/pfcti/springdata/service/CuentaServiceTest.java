@@ -48,4 +48,12 @@ class CuentaServiceTest {
         //cuentaService.insertarCuenta(cuentaDto);
         assertEquals(1,1);
     }
+
+    //Uso de colas de punto a punto.
+    @Test
+    void creacionDeCuenta() {
+        CuentaDto cuentaDto = new CuentaDto();
+        cuentaDto.setNumero("123");
+        cuentaService.creacionDeCuenta(cuentaDto);
+    }
 }

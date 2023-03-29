@@ -6,6 +6,8 @@ import com.pfcti.springdata.dto.CuentaDto;
 import com.pfcti.springdata.model.Cliente;
 import com.pfcti.springdata.model.Cuenta;
 import com.pfcti.springdata.repository.CuentaRepository;
+import com.pfcti.springdata.springjms.dto.NotificationDto;
+import com.pfcti.springdata.springjms.senders.NotificationSender;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +26,10 @@ public class CuentaService {
     CuentaRepository cuentaRepository;
 
     private CuentaSpecification cuentaSpecification;
+
+    private ClienteService clienteService;
+
+    private NotificationSender notificationSender;
 
     public List<CuentaDto> buscarCuentaDinamicamentePorCriterio(CuentaDto cuentaDtoFilter){
         return cuentaRepository.findAll(cuentaSpecification.buildFilter(cuentaDtoFilter))
@@ -67,6 +73,15 @@ public class CuentaService {
         cuenta = fromDtoToCuenta(cuentaDto);
         cuentaRepository.save(cuenta);
         log.info("Cuenta: {} ", cuenta);
+        this.enviarNotificación(cuentaDto);
+    }
+
+    private void enviarNotificación(CuentaDto cuentaDto){
+        NotificationDto notificationDto = new NotificationDto();
+        ClienteDto clienteDto = clienteService.obtenerCliente(cuentaDto.getId());
+        notificationDto.setPhoneNumber(clienteDto.getTelefono());
+        notificationDto.setMailBody("Estimado: ");
+        notificationSender.sendSMS(notificationDto);
     }
 
     private Cuenta fromDtoToCuenta(CuentaDto cuentaDto) {
