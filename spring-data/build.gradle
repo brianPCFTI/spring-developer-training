@@ -79,6 +79,9 @@ dependencies {
 
 	implementation group: "com.twilio.sdk", name: "twilio", version: "9.2.0"
 
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.security:spring-security-test'
+
 }
 
 /*
