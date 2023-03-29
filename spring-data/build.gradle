@@ -76,6 +76,9 @@ dependencies {
 	implementation 'org.apache.activemq:artemis-jakarta-server'
 
 	implementation 'org.springframework.boot:spring-boot-starter-integration'
+
+	implementation group: "com.twilio.sdk", name: "twilio", version: "9.2.0"
+
 }
 
 /*

@@ -43,3 +43,21 @@ public class QuequeApi {
     }
 
 }
+
+/*
+
+Llamada a Twilio.
+
+private final static String TWILIO_ACCOUNT_SID = "";
+    private final static String TWILIO_AUTH_TOKEN = "";
+    private final static String TWILIO_MESSAGE_SID = "";
+// Puede tener la logica que necesitemos
+        String sms = "Hola desde Twilio SMS";
+        Twilio.init(TWILIO_ACCOUNT_SID.trim(), TWILIO_AUTH_TOKEN.trim());
+        com.twilio.rest.api.v2010.account.Message.creator(new PhoneNumber("+593999714503"),
+                TWILIO_MESSAGE_SID.trim(), sms).create();
+
+import com.twilio.Twilio;
+import com.twilio.type.PhoneNumber;
+
+* */
