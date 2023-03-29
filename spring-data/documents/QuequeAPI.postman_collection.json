@@ -1,0 +1,45 @@
+{
+	"info": {
+		"_postman_id": "1fa93c0a-be5d-47c8-95ff-a060e3641a47",
+		"name": "QuequeAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "quequePointToPoint",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 3,\r\n    \"nombre\": \"BRIAN\",\r\n    \"apellidos\": \"MORA\",\r\n    \"cedula\": \"1\",\r\n    \"telefono\": \"093939393\",\r\n    \"paisNacimiento\": \"CR\",\r\n    \"estado\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/api/queque",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"api",
+						"queque"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
