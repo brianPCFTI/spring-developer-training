@@ -46,9 +46,9 @@ public class SecurityConfig {
                 .and()
                 .oauth2ResourceServer()
                 .jwt()
-
                 //.httpBasic()
         ;
+        http.oauth2Login();
         return http.build();
     }
 
