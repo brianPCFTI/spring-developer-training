@@ -43,6 +43,38 @@
 			"response": []
 		},
 		{
+			"name": "Basic-Braver-Token",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJiR0l6V3RDcV96QXFOdE50SGhUVkJITFhOeGY5U2lzME5oNkFoc2lmd0JrIn0.eyJleHAiOjE2ODAyMTgyNzEsImlhdCI6MTY4MDIxNzk3MSwianRpIjoiNDNhNGY5NmUtYmVkZC00NjU4LThiYTQtZTYyNTRhNmQ4OWVmIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MjgwL3JlYWxtcy9zcHJpbmctY291cnNlIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6ImUzMDQyMWJmLTc2Y2ItNDVlZS1iNDJiLTQ2MjQ4NmJkMzQ0ZSIsInR5cCI6IkJlYXJlciIsImF6cCI6ImN1cnNvLWNsaWVudGUiLCJzZXNzaW9uX3N0YXRlIjoiZmFlODg3ZmItYWRmNy00YjA1LWFlMjMtMjY1ODkzZjkzMjNhIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIiwidXNlciIsImRlZmF1bHQtcm9sZXMtc3ByaW5nLWNvdXJzZSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoiZW1haWwgcHJvZmlsZSIsInNpZCI6ImZhZTg4N2ZiLWFkZjctNGIwNS1hZTIzLTI2NTg5M2Y5MzIzYSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwicHJlZmVycmVkX3VzZXJuYW1lIjoidXNlciIsImdpdmVuX25hbWUiOiIiLCJmYW1pbHlfbmFtZSI6IiJ9.cYcEpvG-FfX8juPn71ooLdTPitCUACY0SX7d5rjAeYFOob5BKSQjmvd8nQQKQnQRnyTZ8n_V3oPNMA6zI4XNNkKCuHJ3mAJ9K1IzSWJjoHORdr58qp3YieA5yq4NIYo0_AKQhkyerImUEGkxz2FoJgqETH_qvmr3SezWA_tLS2vs9kYo5mZ8a4CoMP5u9ej5BW2ABwHbG4ubm9_CRopsLoOsOQjlXPlDo94uWONt3jws21IQapG8ws8l5PYjEo7_PMQZmsF4iJSuGBFtbFxACQ4R4nwPADxOU1LCFiu4MKVTkfg_dnyes9G2ovKeIrvvl6oB6szoMwmvRauFxAruHA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/api/cliente/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"api",
+						"cliente",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Login",
 			"request": {
 				"auth": {
@@ -119,6 +151,83 @@
 						{
 							"key": "grant_type",
 							"value": "password",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8280/realms/spring-course/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8280",
+					"path": [
+						"realms",
+						"spring-course",
+						"protocol",
+						"openid-connect",
+						"token"
+					],
+					"query": [
+						{
+							"key": "cliente_id",
+							"value": "curso-cliente",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ClockGetTokenRefresh",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "userPass",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "curso-cliente",
+							"type": "default"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "userpass",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "grant_type",
+							"value": "refresh_token",
+							"type": "default"
+						},
+						{
+							"key": "refresh_token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI4MzJkZGI1NC0xZDdiLTQyMGUtOThmZi05NTZjZTU3YWM5N2MifQ.eyJleHAiOjE2ODAyMTkzMDksImlhdCI6MTY4MDIxNzUwOSwianRpIjoiZGRkZTViODItYTFlNi00MGYzLThkMjQtMmIyMDFkMDIzMzEzIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MjgwL3JlYWxtcy9zcHJpbmctY291cnNlIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo4MjgwL3JlYWxtcy9zcHJpbmctY291cnNlIiwic3ViIjoiZTMwNDIxYmYtNzZjYi00NWVlLWI0MmItNDYyNDg2YmQzNDRlIiwidHlwIjoiUmVmcmVzaCIsImF6cCI6ImN1cnNvLWNsaWVudGUiLCJzZXNzaW9uX3N0YXRlIjoiYWFlNWU5ZWYtZDQyNC00NjY0LTk2MDktY2Q3NjBkODYxOGY3Iiwic2NvcGUiOiJlbWFpbCBwcm9maWxlIiwic2lkIjoiYWFlNWU5ZWYtZDQyNC00NjY0LTk2MDktY2Q3NjBkODYxOGY3In0.IeMPi9LPTXpFq1pNfjN3gGf5QoLaYI4As8BrAmiQke0",
 							"type": "default"
 						}
 					]
