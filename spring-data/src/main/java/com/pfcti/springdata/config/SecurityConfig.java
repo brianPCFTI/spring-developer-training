@@ -47,6 +47,7 @@ public class SecurityConfig {
                 .oauth2ResourceServer()
                 .jwt()
                 //.httpBasic()
+                .jwtAuthenticationConverter(new CustomJwtAuthenticationConverter());
         ;
         http.oauth2Login();
         return http.build();
