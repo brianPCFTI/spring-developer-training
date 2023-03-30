@@ -9,9 +9,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+
 @Configuration
 public class SecurityConfig {
 
+    /*
     @Bean
     public UserDetailsService userDetailsService() {
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
@@ -25,6 +27,7 @@ public class SecurityConfig {
                 .build());
         return manager;
     }
+*/
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
@@ -35,13 +38,17 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.DELETE)
                 .hasRole("ADMIN")
                 .requestMatchers("/v1/api/cliente/**", "/v1/api/employee/**")
-                .hasAnyRole("USER", "ADMIN")
+                .hasAnyRole("USER", "ADMIN" , "user",  "admin")
                 .requestMatchers("/v1/api/login/**")
                 .anonymous()
                 .anyRequest()
                 .authenticated()
                 .and()
-                .httpBasic();
+                .oauth2ResourceServer()
+                .jwt()
+
+                //.httpBasic()
+        ;
         return http.build();
     }
 
